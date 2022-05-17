@@ -8,10 +8,11 @@ import { Card } from 'react-bootstrap';
 const Tables = () => {
 
   const tables = useSelector(getAllTables);
-  console.log(tables);
 
   return (
     <>
+      <h1>All tables</h1>
+      
       {tables.map(table =>(
         <Card key={table.id} className="d-flex flex-row justify-content-between align-items-center border-0 border-bottom py-1">
           <Card.Body className="d-flex flex-row gap-4 align-items-center px-0">

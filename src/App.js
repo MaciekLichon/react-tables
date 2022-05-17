@@ -18,26 +18,28 @@ const App = () => {
 
   // wlaczyc stan, dodac settables w fetch i zmienic fetch w tablesRedux
 
-  // const [tables, setTables] = useState(); // dlaczego to dziala? setTables w fetchTables i useSelector w Tables.js
-  // const [loading, setLoading] = useState(false); // loading tez cos nie bardzo, setLoading w fetchTables
+  const [tables, setTables] = useState(); // dlaczego to dziala? setTables w fetchTables i useSelector w Tables.js
+  const [loading, setLoading] = useState(false); // loading tez cos nie bardzo, setLoading w fetchTables
 
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchTables()), [dispatch]);
+  // useEffect(() => dispatch(fetchTables()), [dispatch]);
   // useEffect(() => dispatch(fetchTables(setTables)), [dispatch]);
-  // useEffect(() => dispatch(fetchTables(setTables, setLoading)), [dispatch]);
+  useEffect(() => dispatch(fetchTables(setTables, setLoading)), [dispatch]);
   useEffect(() => dispatch(fetchStatuses()), [dispatch]);
 
   return (
     <div>
       <Container>
         <Header />
-        { /*(loading) && <>Loading...</>*/}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/table/:id" element={<Table />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        { (loading) && <h1>Loading...</h1> }
+        { (!loading) &&
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/table/:id" element={<Table />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        }
         <Footer />
       </Container>
     </div>

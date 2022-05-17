@@ -11,15 +11,15 @@ const EDIT_TABLE = createActionName('EDIT_TABLE');
 export const updateTables = payload => ({ type: UPDATE_TABLES, payload });
 export const editTable = payload => ({ type: EDIT_TABLE, payload });
 
-export const fetchTables = (setTableState) => {
+export const fetchTables = (setTableState, setLoadingState) => {
   return (dispatch) => {
-    // setLoadingState(true);
+    setLoadingState(true);
     fetch('http://localhost:3131/api/tables')
       .then(res => res.json())
       .then(tables => {
         dispatch(updateTables(tables));
-        // setTableState(tables);
-        // setLoadingState(false);
+        setTableState(tables);
+        setLoadingState(false);
       })
   }
 };

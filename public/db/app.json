@@ -4,15 +4,15 @@
       "id": "1",
       "status": "Busy",
       "peopleAmount": "2",
-      "maxPeopleAmount": "4",
-      "bill": "20"
+      "maxPeopleAmount": "3",
+      "bill": "5"
     },
     {
       "id": "2",
-      "status": "Free",
-      "peopleAmount": "0",
+      "status": "Busy",
+      "peopleAmount": "3",
       "maxPeopleAmount": "3",
-      "bill": "0"
+      "bill": "123"
     },
     {
       "id": "3",
