@@ -10,19 +10,29 @@ import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 
 import { fetchTables } from './redux/tablesRedux';
-import { useEffect } from 'react';
+import { fetchStatuses } from './redux/statusesRedux';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const App = () => {
 
+  // wlaczyc stan, dodac settables w fetch i zmienic fetch w tablesRedux
+
+  // const [tables, setTables] = useState(); // dlaczego to dziala? setTables w fetchTables i useSelector w Tables.js
+  // const [loading, setLoading] = useState(false); // loading tez cos nie bardzo, setLoading w fetchTables
+
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(fetchTables()), [dispatch]);
+  // useEffect(() => dispatch(fetchTables(setTables)), [dispatch]);
+  // useEffect(() => dispatch(fetchTables(setTables, setLoading)), [dispatch]);
+  useEffect(() => dispatch(fetchStatuses()), [dispatch]);
 
   return (
     <div>
       <Container>
         <Header />
+        { /*(loading) && <>Loading...</>*/}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/table/:id" element={<Table />} />
